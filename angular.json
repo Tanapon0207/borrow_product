@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["sweetalert2"],
             "outputPath": "dist/my-app",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,9 +26,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
             ],
-            "scripts": []
+            "scripts": [
+
+            ]
           },
           "configurations": {
             "production": {
@@ -88,14 +93,18 @@
             ],
             "styles": [
               "src/styles.css"
+
+
             ],
-            "scripts": []
+            "scripts": [
+
+            ]
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "fa3fb2ac-14f6-4b6b-9486-860adc6cf63d"
+    "analytics": "59002142-228e-4dbc-a59b-a742a19df025"
   }
 }
