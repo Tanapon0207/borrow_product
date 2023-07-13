@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Home</title>
+</head>
+
+<body>
+  <header class="bg-white shadow">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900 ml-2.0">Home</h1>
+      <p>คุณ:  {{ userdata.firstname }} {{ userdata.lastname }} !</p>
+      <p>สวัสดีคุณ: {{userdata.username}} !</p>
+    </div>
+  </header>
+  <main>
+    <div class="bg-white rounded-lg shadow m-4 dark:bg-gray-200">
+      <div class="">
+        <!-- Your content -->
+        <!--
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque sequi ut repudiandae quas quae maxime molestiae atque nobis enim amet, error ex laborum odio? Natus eveniet animi ducimus quas nesciunt.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis nisi dolor eveniet fugiat fuga praesentium rem natus eius consequatur accusamus expedita quidem laborum modi, culpa totam accusantium voluptas illum nemo!
+        -->
+
+        <main class="py-6 px-4 sm:p-6 md:py-10 md:px-8">
+          <div class="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">
+            <div
+              class="relative p-3 col-start-1 row-start-1 flex flex-col-reverse rounded-lg bg-gradient-to-t from-black/75 via-black/0 sm:bg-none sm:row-start-2 sm:p-0 lg:row-start-1">
+              <h1 class="mt-1 text-lg font-semibold text-black sm:text-slate-900 md:text-2xl dark:sm:text-black">
+                ******</h1>
+              <p class="text-sm leading-4 font-medium text-black sm:text-slate-500 dark:sm:text-slate-400">******
+              </p>
+            </div>
+            <div
+              class="grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0">
+              <img src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt=""
+                class="w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full" loading="lazy">
+              <img src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt=""
+                class="hidden w-full h-52 object-cover rounded-lg sm:block sm:col-span-2 md:col-span-1 lg:row-start-2 lg:col-span-2 lg:h-32"
+                loading="lazy">
+              <img src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt=""
+                class="hidden w-full h-52 object-cover rounded-lg md:block lg:row-start-2 lg:col-span-2 lg:h-32"
+                loading="lazy">
+            </div>
+            <dl
+              class="mt-4 text-xs font-medium flex items-center row-start-2 sm:mt-1 sm:row-start-3 md:mt-2.5 lg:row-start-2">
+              <dt class="sr-only">Reviews</dt>
+              <dd class="text-indigo-600 flex items-center dark:text-indigo-400">
+                <svg width="24" height="24" fill="none" aria-hidden="true"
+                  class="mr-1 stroke-current dark:stroke-indigo-500">
+                  <path d="m12 5 2 5h5l-4 4 2.103 5L12 16l-5.103 3L9 14l-4-4h5l2-5Z" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>4.89 <span class="text-slate-400 font-normal">(128)</span></span>
+              </dd>
+              <dt class="sr-only">Location</dt>
+              <a
+                href="https://www.google.com/maps/place/256%2F4+%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%95%E0%B8%B9%E0%B8%A5%E0%B8%AD%E0%B8%94+%E0%B8%95%E0%B8%B3%E0%B8%9A%E0%B8%A5+%E0%B9%83%E0%B8%99%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87+%E0%B8%AD%E0%B8%B3%E0%B9%80%E0%B8%A0%E0%B8%AD%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B8%99%E0%B8%84%E0%B8%A3%E0%B8%A8%E0%B8%A3%E0%B8%B5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%A3%E0%B8%B2%E0%B8%8A+%E0%B8%99%E0%B8%84%E0%B8%A3%E0%B8%A8%E0%B8%A3%E0%B8%B5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%A3%E0%B8%B2%E0%B8%8A+80000/@8.4207301,99.9666921,21z/data=!4m19!1m12!4m11!1m6!1m2!1s0x305301153302bdd3:0x7a9b5ea64a23552c!2z4Lia4Lij4Li04Lip4Lix4LiXIOC5guC4m-C4o-C5gOC4geC4o-C4qiDguYDguJnguYfguJXguYDguKfguLTguKPguYzguIQg4LiE4Lit4LiZ4LiL4Lix4Lil4LiX4LmMIOC4iOC4s-C4geC4seC4lCAyNTYvNCDguJbguJnguJnguJvguKPguLDguJXguLnguKXguK3guJQg4LiV4Liz4Lia4LilIOC5g-C4meC5gOC4oeC4t-C4reC4hyDguK3guLPguYDguKDguK3guYDguKHguLfguK3guIfguJnguITguKPguKjguKPguLXguJjguKPguKPguKHguKPguLLguIog4LiZ4LiE4Lij4Lio4Lij4Li14LiY4Lij4Lij4Lih4Lij4Liy4LiKIDgwMDAw!2m2!1d99.9667287!2d8.4206769!1m3!2m2!1d99.966727!2d8.4206777!3m5!1s0x3053011504ba38cd:0xf25df439a3760d32!8m2!3d8.4206325!4d99.9667239!16s%2Fg%2F11h38q1tj7?hl=th&entry=ttu">
+                <dd class="flex items-center">
+                  <svg width="2" height="2" aria-hidden="true" fill="currentColor" class="mx-3 text-slate-300">
+                    <circle cx="1" cy="1" r="1" />
+                  </svg>
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="mr-1 text-slate-400 dark:text-slate-500" aria-hidden="true">
+                    <path d="M18 11.034C18 14.897 12 19 12 19s-6-4.103-6-7.966C6 7.655 8.819 5 12 5s6 2.655 6 6.034Z" />
+                    <path d="M14 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+                  </svg>
+                 ******
+                </dd>
+              </a>
+            </dl>
+            <div
+              class="mt-4 col-start-1 row-start-3 self-center sm:mt-0 sm:col-start-2 sm:row-start-2 sm:row-span-2 lg:mt-6 lg:col-start-1 lg:row-start-3 lg:row-end-4">
+              <button type="button"
+                class="bg-indigo-600 text-white text-sm leading-6 font-medium py-2 px-3 rounded-lg">Check
+                availability</button>
+            </div>
+            <p
+              class="mt-4 text-sm leading-6 col-start-1 sm:col-span-2 lg:mt-6 lg:row-start-4 lg:col-span-1 dark:text-slate-400">
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quia facere iusto earum fugit ullam quo quaerat, eligendi id sit nulla magni odit dolor modi neque excepturi nam praesentium mollitia!
+            </p>
+          </div>
+
+
+          <footer class="">
+            <div class="w-full mx-auto max-w-screen-md p-4 md:flex md:items-center md:justify-between">
+              <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400 mt-6">© 2023 <a
+                  href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+              </span>
+              <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+                </li>
+                <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </footer>
+        </main>
+
+
+
+
+
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
