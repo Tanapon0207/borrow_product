@@ -1,0 +1,494 @@
+<div class="p-4 sm:ml-64">
+
+  <br>
+  <div class="">
+
+    <div class="">
+
+
+
+      <!--title you-->
+      <!--
+      <div>
+        <button class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+          data-bs-toggle="modal" data-bs-target="#addProduct1" type="submit">Add Product</button>
+      --<button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginUser1"
+          type="submit">Login
+          User</button>--
+
+
+
+      </div>
+    -->
+
+      <h3>จำนวนสินค้าที่สามารถยืมได้ : {{length_p}} ชิ้น</h3>
+
+      <br>
+
+      <input class="form-control mr-sm-2" type="search" placeholder="ค้นหา" aria-label="Search" [(ngModel)]="keysearch"
+        (keyup)="updateFilter()">
+
+
+
+
+
+      <!--
+      <input type="text" class="form-control mr-sm-2"[(ngModel)]="keysearch" (keyup)='updateFilter()'>
+      -->
+      <br>
+      <!--
+      <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an
+        option</label>
+      <select id="countries"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option selected>เลือกค้นหาหัวตาราง</option>
+        <option value="US">วันที่ซื้อ</option>
+        <option value="CA">รหัสสินค้า</option>
+        <option value="FR">ชื่อรุ่น</option>
+        <option value="DE">ชื่อสินค้า</option>
+        <option value="DE">หมวดหมู่</option>
+        <option value="DE">จำนวน</option>
+        <option value="DE">ราคา</option>
+        <option value="DE">สถานะ</option>
+      </select>
+-->
+
+
+
+
+      <br>
+
+
+
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+        data-bs-toggle="modal" data-bs-target="#showbill" (click)="submit()" > <!--(click)="deselectAll1()"  (click)="deleteSelected()"  -->
+        ยืม / เบิก
+      </button>
+
+      &nbsp;
+
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+        (click)="deselectAll()">
+        เอาที่เลือกออก
+      </button>
+
+
+
+
+
+      <br>
+
+
+
+
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
+
+
+
+
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table table-hover" id="dataTable">
+
+
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-left">
+            <tr>
+
+              <th scope="col" class="p-4">
+                <div class="flex items-center">
+                  <input id="checkbox-all-search" type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                </div>
+
+              </th>
+
+              <th scope="col" class="px-6 py-3">
+                รหัสสินค้า
+              </th>
+              <th scope="col" class="px-6 py-3">
+                ชื่อสินค้า
+              </th>
+              <th scope="col" class="px-6 py-3">
+                ยี่ห้อ
+              </th>
+              <th scope="col" class="px-6 py-3">
+                รุ่น
+              </th>
+              <th scope="col" class="px-6 py-3">
+                จำนวนคงเหลือ
+              </th>
+
+
+              <!--
+              <th scope="col" class="px-15 py-3 text-center">
+                Action
+              </th>
+              -->
+            </tr>
+          </thead>
+
+
+
+          <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 "
+              *ngFor="let product of productList">
+              <td class="w-4 p-4">
+                <div class="flex items-center"><!--*ngFor="let item of productList"-->
+                  <input id="checkbox-table-search-1" type="checkbox" [(ngModel)]="product.selected"
+                    (change)="checkboxChanged()"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                </div>
+
+              </td>
+
+              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{product.product_no}}
+              </td>
+
+              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{product.product_name}}
+              </td>
+
+              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{product.brand}}</td>
+
+              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{product.model}}</td>
+              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{product.amount}}</td>
+
+              <td>
+              <td>
+                <!--
+                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal"
+                  data-bs-target="#editProduct" (click)="editProduct(product)">Edit</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteProduct(product)">Delete</button>
+                -->
+              </td>
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+      <!--
+      <div
+        class="bg-white sticky sm:flex items-center w-full sm:justify-between bottom-0 right-0 border-t border-gray-200 p-4">
+        <div class="flex items-center mb-4 sm:mb-0">
+          <a href="#"
+            class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <a href="#"
+            class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center mr-2">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <span class="text-sm font-normal text-gray-500">Showing <span class="text-gray-900 font-semibold">1-20</span>
+            of <span class="text-gray-900 font-semibold">4463</span></span>
+        </div>
+        <div class="flex items-center space-x-3">
+          <a href="#"
+            class="flex-1 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center">
+            <svg class="-ml-1 mr-1 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            Previous
+          </a>
+          <a href="#"
+            class="flex-1 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center">
+            Next
+            <svg class="-mr-1 ml-1 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      --->
+
+
+
+
+
+
+
+
+
+      <!-- Edit product  modal -->
+      <!--
+      <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+              <svg class="h-8 w-8 text-red-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" data-bs-dismiss="modal"
+                aria-label="Close">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </div>
+            <div class="modal-body">
+
+              <form [formGroup]="productDetail">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">วันที่ซื้อ</label>
+                  <input type="text" formControlName="date_buy" class="form-control" id="date_buy"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">รหัสสินค้า</label>
+                  <input type="text" formControlName="product_no" class="form-control" id="product_no"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">ชื่อรุ่น</label>
+                  <input type="text" formControlName="model" class="form-control" id="model"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">ชื่อสินค้า </label>
+                  <input type="text" formControlName="product_name" class="form-control" id="product_name"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">หมวดหมู่</label>
+                  <input type="text" formControlName="group" class="form-control" id="group"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">จำนวน </label>
+                  <input type="number" formControlName="amount" class="form-control" id="amount"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">ราคา </label>
+                  <input type="text" formControlName="price" class="form-control" id="price"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">สถานะ </label>
+                  <input type="text" formControlName="status" class="form-control" id="status"
+                    aria-describedby="emailHelp">
+                </div>
+
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-success" (click)="updateProduct()"
+                    data-bs-dismiss="modal">Update
+                  </button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+
+
+      <!-- Add Product modal -->
+      <!--
+      <div class="modal fade" id="showbill" tabindex="-1" aria-labelledby="example" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="example" style="text-align: center;">Add Product</h5>
+              <svg class="h-8 w-8 text-red-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" data-bs-dismiss="modal"
+                aria-label="Close">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+
+
+
+            </div>
+            <div class="modal-body">
+
+              <form [formGroup]="productDetail">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">วันที่ซื้อ</label>
+                  <input type="text" formControlName="date_buy" class="form-control" id="date_buy"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">รหัสสินค้า</label>
+                  <input type="text" formControlName="product_no" class="form-control" id="product_no"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">ชื่อรุ่น</label>
+                  <input type="text" formControlName="model" class="form-control" id="model"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">ชื่อสินค้า </label>
+                  <input type="text" formControlName="product_name" class="form-control" id="product_name"
+                    aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">หมวดหมู่</label>
+                  <input type="text" formControlName="group" class="form-control" id="group"
+                    aria-describedby="emailHelp">
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">จำนวน </label>
+                  <input type="text" formControlName="amount" class="form-control" id="amount"
+                    aria-describedby="emailHelp">
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">ราคา </label>
+                  <input type="text" formControlName="price" class="form-control" id="price"
+                    aria-describedby="emailHelp">
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">สถานะ</label>
+                  <input type="text" formControlName="status" class="form-control" id="status"
+                    aria-describedby="emailHelp">
+                </div>
+
+
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Add
+                    Product
+                  </button>
+                   <!-- (click)="addProduct()"-->
+      <!--
+                </div>
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    -
+-->
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>วันที่ซื้อ</th>
+            <th>รหัสสินค้า</th>
+            <th>ชื่อรุ่น</th>
+            <th>ชื่อสินค้า</th>
+            <th>หมวดหมู่</th>
+            <th>จำนวน</th>
+            <th>ราคา</th>
+            <th>สถานะ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let databill of selectedCheckboxes">
+            <td>{{ databill.date_buy }}</td>
+            <td>{{ databill.product_no }}</td>
+            <td>{{ databill.model }}</td>
+            <td>{{ databill.product_name }}</td>
+            <td>{{ databill.group }}</td>
+            <td>{{ databill.amount }}</td>
+            <td>{{ databill.price }}</td>
+            <td>{{ databill.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="modal fade" id="showbill" tabindex="-1" aria-labelledby="example" aria-hidden="true"
+        *ngFor="let databill of selectedCheckboxes">
+        <div class="card">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="card-body mx-4">
+                  <div class="container">
+                    <svg class="h-8 w-8 text-red-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                      data-bs-dismiss="modal" aria-label="Close" style="margin-left: 350px; margin-top: 1px;">
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                    <p class="my-1 mx-5" style="font-size: 30px; text-align: center; margin-top: 5px;">รายละเอียดการยืม</p>
+                    <br>
+                    <div class="row">
+                      <ul class="list-unstyled">
+                        <li class="text-black">ชื่อผู้ยืม: {{ userdata.firstname }} {{ userdata.lastname }}</li>
+                        <!--
+                          <li class="text-muted mt-1"><span class="text-black">Invoice</span> #12345</li>
+                          -->
+                        <!--<li class="text-black mt-1">{{ day_b }}  น. </li>-->
+
+                      </ul>
+                      <hr>
+
+
+
+                    </div>
+                    <div class="row" *ngFor="let databill of selectedCheckboxes">
+                      <div class="col-xl-12">
+                        <p>ชื่อสินค้า : {{ databill.product_name }}</p>
+                        <p>ชื่อรุ่น : {{ databill.model }}</p>
+                        <p class="float-end">จำนวน : {{databill.amount}}
+                        <div>
+                        </div>
+                      </div>
+
+                      <hr>
+                    </div>
+                    <div class="row">
+
+                      <hr style="border: 2px solid black;">
+                    </div>
+                    <div class="row text-black">
+
+                      <div class="col-xl-12">
+                        <p class="float-end fw-bold">จำนวนทั้งหมด :
+                        </p>
+                      </div>
+                      <hr style="border: 2px solid black;">
+                    </div>
+                    <div class="text-center">
+                      <button type="button" class="btn btn-outline-primary" (click)="addBill()" >ยืนยัน</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+  </div>
+</div>
